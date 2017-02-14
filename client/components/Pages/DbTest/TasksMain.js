@@ -39,9 +39,6 @@ class TasksMain extends React.Component {
     this.setState({ isEditing });
   }
 
-
-
-
   
     renderTasks() {
     const { viewer } = this.props;
@@ -64,7 +61,6 @@ class TasksMain extends React.Component {
       this.commitChanges();
     }
   };
-
  
   onChange = (e) => {
     this.setState({ text: e.target.value });
@@ -129,3 +125,5 @@ export default Relay.createContainer( TasksMain, {
       }`
   },
 });
+
+//

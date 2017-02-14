@@ -1,4 +1,7 @@
 /* eslint-disable no-unused-vars, no-use-before-define */
+
+//https://github.com/mickhansen/graphql-sequelize/issues/227 
+
 import {
   GraphQLBoolean,
   GraphQLFloat,
@@ -74,10 +77,6 @@ const userType = new GraphQLObjectType({
       type: GraphQLString,
       description: 'Users\'s username'
     },
-     website: {
-      type: GraphQLString,
-      description: 'User\'s website'
-    },
     test01: {
       type: GraphQLString,
       description: 'User\'s website'
@@ -86,6 +85,10 @@ const userType = new GraphQLObjectType({
       type: GraphQLString,
       description: 'User\'s website'
     },  
+     website: {
+      type: GraphQLString,
+      description: 'User\'s website'
+    },
       /*projects: {
         type: new GraphQLList(projectType),
         args: {
@@ -223,7 +226,7 @@ const addTaskMutation = mutationWithClientMutationId({
             }
           }),
           mutateAndGetPayload: async ({title}, {viewer}) => {
-            let task = await this.Task.create({
+            let Task = await this.Task.create({
               title: title,
               userId: viewer.id
             });
@@ -254,7 +257,7 @@ const addFeatureMutation = mutationWithClientMutationId({
     viewer: {
       type: userType,
       resolve: () => getUser(1)
-    }
+    },
   },
 
   mutateAndGetPayload: ({ name, description, url }) => addFeature(name, description, url)
@@ -270,7 +273,7 @@ const addFeatureMutation = mutationWithClientMutationId({
     const queryType = new GraphQLObjectType({
     name: 'Query',
     fields: {
-      viewer: {
+    viewer: {
       type: userType,
       resolve: () => getUser(1)
     },

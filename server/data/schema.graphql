@@ -121,13 +121,13 @@ type User {
   username: String
 
   # User's website
-  website: String
-
-  # User's website
   test01: String
 
   # User's website
   test02: String
+
+  # User's website
+  website: String
   users(limit: Int, order: String): [User]
   tasks(after: String, first: Int, before: String, last: Int, orderBy: [TaskConnectionOrder]): TaskConnection
 }
