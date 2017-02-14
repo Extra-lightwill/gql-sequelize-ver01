@@ -10,13 +10,25 @@ import webpackConfig from '../webpack.config';
 import config from './config/environment';
 import schema from './data/schema';
 
+const formatError = (error) => {
+  var err = {
+    message: error.message,
+    locations: error.locations,
+    stack: error.stack
+  }
+  console.log(chalk.red(JSON.stringify(err)));
+  delete err.stack;
+  return err;
+};
+
 if (config.env === 'development') {
   // Launch GraphQL
   const graphql = express();
   graphql.use('/', graphQLHTTP({
     graphiql: true,
     pretty: true,
-    schema
+    formatError,
+    schema,
   }));
   graphql.listen(config.graphql.port, () => console.log(chalk.green(`GraphQL is listening on port ${config.graphql.port}`)));
 

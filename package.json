@@ -69,7 +69,7 @@
     "cross-env": "^3.1.4",
     "css-loader": "^0.26.1",
     "express": "^4.14.0",
-    "express-graphql": "^0.6.1",
+    "express-graphql": "^0.6.3",
     "favicons-webpack-plugin": "0.0.7",
     "file-loader": "^0.9.0",
     "graphql": "^0.8.2",
