@@ -42,7 +42,8 @@ import Conn from './db/connection';
 
 import { resolver, 
           relay, 
-          attributeFields 
+          attributeFields,
+          typeMapper 
 } from 'graphql-sequelize';
 
 //declare node definitions 
@@ -64,10 +65,18 @@ import {
     ProjectUser,
 } from './db/model';
 
+
+//-----Type Mapping------//
+
+nodeTypeMapper.mapTypes({
+  [User.name]: { type: userType },
+  [Task.name]: { type: taskType },
+  viewer: { type: queryType }
+});
+
 /**
  * TYPES 
  */
-
 
 const userType = new GraphQLObjectType({
   name: 'User',
