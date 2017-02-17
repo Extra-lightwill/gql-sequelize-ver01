@@ -78,6 +78,10 @@ nodeTypeMapper.mapTypes({
  * TYPES 
  */
 
+const viewer = User.build({
+        id: Math.ceil(Math.random() * 999)
+      });
+
 const userType = new GraphQLObjectType({
   name: 'User',
   fields: () => ({
@@ -265,7 +269,7 @@ const addFeatureMutation = mutationWithClientMutationId({
     },
     viewer: {
       type: userType,
-      resolve: () => getUser(1)
+      resolve: resolver(User)
     },
   },
 
@@ -284,7 +288,7 @@ const addFeatureMutation = mutationWithClientMutationId({
     fields: {
     viewer: {
       type: userType,
-      resolve: () => getUser(1)
+      resolve: (id) => viewer.id
     },
     node: nodeField,
     }
