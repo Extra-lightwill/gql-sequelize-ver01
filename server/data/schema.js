@@ -288,7 +288,7 @@ const addFeatureMutation = mutationWithClientMutationId({
     fields: {
     viewer: {
       type: userType,
-      resolve: (id) => viewer.id
+      resolve: () => viewer
     },
     node: nodeField,
     }

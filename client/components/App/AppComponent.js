@@ -15,16 +15,14 @@ export default class App extends React.Component {
   render() {
     return (
       <div className={styles.root}>
-        <Navbar />
-        <div className={styles.greeting}>
-          <h1 className={styles.sawasdee}>Sawasdee, Sawasdee!</h1>
-          <p>Always a pleasure scaffolding your apps</p>
-          <img src={yeoman} alt='yeoman' />
-        </div>
-        <div className={styles.content}>
+
+      RELAY GRAPHQL SQL DEMO (based on Relay Fullstack)
+
+      <br />
+      <br />
+       
           {this.props.children}
-        </div>
-        <Footer viewer={this.props.viewer} />
+       
       </div>
     );
   }

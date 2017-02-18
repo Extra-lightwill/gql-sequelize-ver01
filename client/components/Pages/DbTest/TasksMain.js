@@ -3,6 +3,10 @@ import Relay from 'react-relay';
 
 import addTaskMutation from './addTaskMutation';
 
+
+const ENTER_KEY_CODE = 13;
+const ESC_KEY_CODE = 27;
+
 class TasksMain extends React.Component {
 
 	 constructor( props )
@@ -25,7 +29,7 @@ class TasksMain extends React.Component {
   };
 
     _onTextInputSave = (text) => {
-    const { relay, task } = this.props;
+    const { relay, tasks } = this.props;
 
     this.setEditMode(false);
 
@@ -47,7 +51,7 @@ class TasksMain extends React.Component {
       <div 
         key={node.id}
         viewer={viewer}
-        task={node}
+        Task={node}
       />
     ));
   }
@@ -55,9 +59,9 @@ class TasksMain extends React.Component {
 
  
   onKeyDown = (e) => {
-    if (this.props.onCancel && e.keyCode === keycode.codes.esc) {
+    if (this.props.onCancel && e.keyCode === ESC_KEY_CODE) {
       this.props.onCancel();
-    } else if (e.keyCode === keycode.codes.enter) {
+    } else if (e.keyCode === ENTER_KEY_CODE) {
       this.commitChanges();
     }
   };
@@ -97,14 +101,15 @@ class TasksMain extends React.Component {
         onChange={this.onChange}
         onBlur={this.onBlur}
         value={this.state.text}
-        onSave={this.onNewTaskSave}
-      >
-      </input>
+      />
+     
 
       <div>
-
-       {this.renderTasks()}     
+      I am a list of tasks:
       
+      <br></br>
+
+     
       </div>
 
       <div>
@@ -126,4 +131,4 @@ export default Relay.createContainer( TasksMain, {
   },
 });
 
-//
+//{this.renderTasks()}  
