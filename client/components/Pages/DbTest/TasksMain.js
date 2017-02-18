@@ -45,7 +45,7 @@ class TasksMain extends React.Component {
 
   
     renderTasks() {
-    const { viewer } = this.props;
+    const { viewer, tasks } = this.props;
 
     return viewer.tasks.edges.map(({ node }) => (
       <div 
@@ -109,8 +109,8 @@ class TasksMain extends React.Component {
       
       <br></br>
 
-     {this.renderTasks()}  
-     
+    
+
       </div>
 
       <div>
@@ -132,4 +132,4 @@ export default Relay.createContainer( TasksMain, {
   },
 });
 
-//
+// {this.renderTasks()}  
