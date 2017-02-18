@@ -10,7 +10,7 @@ import createGraphQlServer from './graphQlServer';
 
 const IMAGE_PORT = 9000;
 const GRAPHQL_PORT = 8080;
-const RELAY_PORT = 3000;
+const RELAY_PORT = 4444;
 
 createGraphQlServer(GRAPHQL_PORT, new Database());
 
@@ -74,7 +74,7 @@ else {
    *
    *****************/
 
-  const port = process.env.PORT || 3000;
+  const port = process.env.PORT || 4444;
   const server = app.listen(port, () => {
     const host = server.address().address;
     const port = server.address().port;

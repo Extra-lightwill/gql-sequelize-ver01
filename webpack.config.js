@@ -44,7 +44,7 @@ if (process.env.NODE_ENV === 'production') {
     // activate HMR for React
     'react-hot-loader/patch',
     path.join(__dirname, 'client/index.js'),
-    'webpack-dev-server/client?http://localhost:3000',
+    'webpack-dev-server/client?http://localhost:4444',
     'webpack/hot/only-dev-server'
   ];
   devtool = 'eval';

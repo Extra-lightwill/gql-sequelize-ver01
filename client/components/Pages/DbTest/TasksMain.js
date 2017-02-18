@@ -19,15 +19,15 @@ class TasksMain extends React.Component {
       text: this.props.initialValue || '',
     };
 
-    this.onNewTaskSave = this.onNewTaskSave.bind(this);
+    this._onNewTaskSave = this._onNewTaskSave.bind(this);
 
   }
 
  
-    onNewTaskSave = (text) => {
+    _onNewTaskSave = (text) => {
 
-    relay.commitUpdate(
-      new addTaskMutation({ viewer, text })
+    this.props.relay.commitUpdate(
+      new addTaskMutation({ viewer: this.props.viewer, text })
     );
   };
 
@@ -65,7 +65,7 @@ class TasksMain extends React.Component {
     if (this.props.onCancel && e.keyCode === ESC_KEY_CODE) {
       this.props.onCancel();
     } else if (e.keyCode === ENTER_KEY_CODE) {
-      this.commitChanges();
+      this._onNewTaskSave();
     }
   };
  
@@ -75,15 +75,14 @@ class TasksMain extends React.Component {
 
   onBlur = () => {
     if (this.props.commitOnBlur) {
-      this.commitChanges();
+      this._onNewTaskSave();
     }
   };
 
 
-   commitChanges() {
+   commitUpdate() {
     const newText = this.state.text.trim();
     if (newText) {
-      this.props.onSave(newText);
       this.setState({ text: '' });
     }
   }
@@ -118,7 +117,7 @@ class TasksMain extends React.Component {
       <div>
       I am a list of tasks:
       
-       <br />
+      <br />
       <br />
 
        {this.renderTasks()}
