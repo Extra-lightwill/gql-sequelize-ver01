@@ -5,7 +5,7 @@ class addTaskMutation extends Relay.Mutation {
   static fragments = {
     viewer: () => Relay.QL`
       fragment on User {
-        tasks (first: 5) {
+        tasks (first: 10) {
           edges
         }
         }

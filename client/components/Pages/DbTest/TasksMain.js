@@ -19,6 +19,8 @@ class TasksMain extends React.Component {
       text: this.props.initialValue || '',
     };
 
+    this.onNewTaskSave = this.onNewTaskSave.bind(this);
+
   }
 
  
@@ -29,7 +31,7 @@ class TasksMain extends React.Component {
     );
   };
 
-    _onTextInputSave = (text) => {
+    /*_onTextInputSave = (text) => {
     const { relay, task } = this.props;
 
     this.setEditMode(false);
@@ -37,7 +39,7 @@ class TasksMain extends React.Component {
     relay.commitUpdate(
       new RenameTodoMutation({ task, text })
     );
-  };
+  };*/
 
 
     setEditMode(isEditing) {
@@ -94,7 +96,7 @@ class TasksMain extends React.Component {
 		return (
 			<div>
 
-      <button>Add new task!</button>
+      <button  onClick={this._onNewTaskSave}>Add new task!</button>
       <button>Edit task</button>
 
       <br />
@@ -149,5 +151,5 @@ export default Relay.createContainer( TasksMain, {
   },
 });
 
-/* {this.renderTasks()}  
+/* {this.renderTasks()}  */
 
