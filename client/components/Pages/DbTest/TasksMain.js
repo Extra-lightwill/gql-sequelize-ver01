@@ -20,7 +20,7 @@ class TasksMain extends React.Component {
     };
 
     this._onNewTaskSave = this._onNewTaskSave.bind(this);
-
+    this._handleTextInputCancel = this._handleTextInputCancel.bind(this);
   }
 
  
@@ -42,7 +42,7 @@ class TasksMain extends React.Component {
   };*/
 
 
-    setEditMode(isEditing) {
+    _setEditMode(isEditing) {
     this.setState({ isEditing });
   }
 
@@ -62,8 +62,8 @@ class TasksMain extends React.Component {
 
  
   onKeyDown = (e) => {
-    if (this.props.onCancel && e.keyCode === ESC_KEY_CODE) {
-      this.props.onCancel();
+    if (this._handleTextInputCancel && e.keyCode === ESC_KEY_CODE) {
+      this._handleTextInputCancel();
     } else if (e.keyCode === ENTER_KEY_CODE) {
       this._onNewTaskSave();
     }
@@ -86,6 +86,10 @@ class TasksMain extends React.Component {
       this.setState({ text: '' });
     }
   }
+
+    _handleTextInputCancel = () => {
+    this._setEditMode(false);
+  };
   
 
 	render () {	
