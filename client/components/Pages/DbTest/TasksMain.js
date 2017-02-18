@@ -109,6 +109,7 @@ class TasksMain extends React.Component {
       
       <br></br>
 
+     {this.renderTasks()}  
      
       </div>
 
@@ -131,4 +132,4 @@ export default Relay.createContainer( TasksMain, {
   },
 });
 
-//{this.renderTasks()}  
+//
