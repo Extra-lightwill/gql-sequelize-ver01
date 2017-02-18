@@ -14,6 +14,8 @@ class TasksMain extends React.Component {
     super( props );
 
       this.state = {
+      viewer: this.props.viewer,
+      tasks: this.props.viewer.tasks,
       isEditing: false,
       text: this.props.initialValue || '',
     };
@@ -118,7 +120,6 @@ class TasksMain extends React.Component {
        <br />
       <br />
 
-    
 
       </div>
 
@@ -141,4 +142,19 @@ export default Relay.createContainer( TasksMain, {
   },
 });
 
-// {this.renderTasks()}  
+/* {this.renderTasks()}  
+
+
+ tasks (
+          first: 2147483647
+        )
+        {
+          edges {
+            node {
+              id,
+              ${Task.getFragment('task')},
+            },
+          },
+
+
+*/
