@@ -29,7 +29,7 @@ class TasksMain extends React.Component {
   };
 
     _onTextInputSave = (text) => {
-    const { relay, tasks } = this.props;
+    const { relay, task } = this.props;
 
     this.setEditMode(false);
 
@@ -94,6 +94,12 @@ class TasksMain extends React.Component {
 			<div>
 
       <button>Add new task!</button>
+      <button>Edit task</button>
+
+      <br />
+      <br />
+
+
       <input 
         //{...this.props}
         placeholder="add a new task here"
@@ -103,18 +109,21 @@ class TasksMain extends React.Component {
         value={this.state.text}
       />
      
+      <br />
+      <br />
 
       <div>
       I am a list of tasks:
       
-      <br></br>
+       <br />
+      <br />
 
     
 
       </div>
 
       <div>
-      TOTAL COUNT: 
+      TOTAL COUNT (TASKS): 
       </div>
 
     </div>

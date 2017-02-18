@@ -5,5 +5,5 @@ $ npm install
 $ npm start
 
 ```
-then navigate to localhost:4444
+then navigate to localhost:4444/db-test
 
