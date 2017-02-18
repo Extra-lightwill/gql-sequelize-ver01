@@ -3,7 +3,6 @@ import Relay from 'react-relay';
 
 import addTaskMutation from './addTaskMutation';
 
-
 const ENTER_KEY_CODE = 13;
 const ESC_KEY_CODE = 27;
 
@@ -53,7 +52,7 @@ class TasksMain extends React.Component {
       <div 
         key={node.id}
         viewer={viewer}
-        Task={node}
+        task={node}
       />
     ));
   }
@@ -120,6 +119,7 @@ class TasksMain extends React.Component {
        <br />
       <br />
 
+       {this.renderTasks()}
 
       </div>
 
@@ -137,6 +137,13 @@ export default Relay.createContainer( TasksMain, {
   fragments: {
     viewer: () => Relay.QL`
     fragment on User {
+       tasks (
+          first: 2147483647
+        )
+        {
+          edges
+          },
+
          ${addTaskMutation.getFragment('viewer')}
       }`
   },
@@ -144,17 +151,3 @@ export default Relay.createContainer( TasksMain, {
 
 /* {this.renderTasks()}  
 
-
- tasks (
-          first: 2147483647
-        )
-        {
-          edges {
-            node {
-              id,
-              ${Task.getFragment('task')},
-            },
-          },
-
-
-*/
