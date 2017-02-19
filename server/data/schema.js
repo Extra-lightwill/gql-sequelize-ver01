@@ -145,8 +145,7 @@ const taskType = new GraphQLObjectType({
     text: {
       type: GraphQLString,
       resolve: (payload) => payload.text,
-      //resolve: resolver(Task)
-      
+      //resolve: resolver(Task)  
     },
     user: {
       type: userType,
@@ -232,7 +231,7 @@ const addTaskMutation = mutationWithClientMutationId({
  * and the entry point into our schema.
  */
 
-    const queryType = new GraphQLObjectType({
+const queryType = new GraphQLObjectType({
     name: 'Query',
     fields: {
     viewer: {

@@ -20,6 +20,7 @@ class addTaskMutation extends Relay.Mutation {
 
   getVariables() {
     return {
+      id: this.props.viewer.id,
       text: this.props.text,
     };
   }
@@ -27,9 +28,8 @@ class addTaskMutation extends Relay.Mutation {
   getFatQuery() {
     return Relay.QL`
       fragment on addTaskPayload {
-        viewer { 
-          tasks,
-        }
+        taskEdge,
+        viewer { tasks }
       }
     `;
   }
