@@ -46,6 +46,24 @@ class addTaskMutation extends Relay.Mutation {
       },
     }];
   }
+
+
+  /*getOptimisticResponse() {
+    return {
+      // FIXME: totalCount gets updated optimistically, but this edge does not
+      // get added until the server responds
+      todoEdge: {
+        node: {
+          complete: false,
+          text: this.props.text,
+        },
+      },
+      viewer: {
+        id: this.props.viewer.id,
+        totalCount: this.props.viewer.totalCount + 1,
+      },
+    };*/
+
 }
 
 export default addTaskMutation;
@@ -96,4 +114,21 @@ export default addTaskMutation;
     return {
       text: this.props.text,
     };
+
+      getOptimisticResponse() {
+    return {
+      // FIXME: totalCount gets updated optimistically, but this edge does not
+      // get added until the server responds
+      todoEdge: {
+        node: {
+          complete: false,
+          text: this.props.text,
+        },
+      },
+      viewer: {
+        id: this.props.viewer.id,
+        totalCount: this.props.viewer.totalCount + 1,
+      },
+    };
+  }
   }*/
