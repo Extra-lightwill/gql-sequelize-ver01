@@ -1,16 +1,3 @@
-input AddFeatureInput {
-  name: String!
-  description: String!
-  url: String!
-  clientMutationId: String
-}
-
-type AddFeaturePayload {
-  featureEdge: FeatureEdge
-  viewer: User
-  clientMutationId: String
-}
-
 input addTaskInput {
   text: String!
   clientMutationId: String
@@ -23,32 +10,7 @@ type addTaskPayload {
   clientMutationId: String
 }
 
-# Feature integrated in our starter kit
-type Feature implements Node {
-  # The ID of an object
-  id: ID!
-
-  # Name of the feature
-  name: String
-
-  # Description of the feature
-  description: String
-
-  # Url of the feature
-  url: String
-}
-
-# An edge in a connection.
-type FeatureEdge {
-  # The item at the end of the edge
-  node: Feature
-
-  # A cursor for use in pagination
-  cursor: String!
-}
-
 type Mutation {
-  addFeature(input: AddFeatureInput!): AddFeaturePayload
   addTask(input: addTaskInput!): addTaskPayload
 }
 
@@ -87,7 +49,7 @@ type Task implements Node {
   # The ID of an object
   id: ID!
   completed: Boolean
-  name: String
+  text: String
   user: User
 }
 

@@ -142,8 +142,11 @@ const taskType = new GraphQLObjectType({
     completed: {
       type: GraphQLBoolean
     },
-    name: {
-      type: GraphQLString
+    text: {
+      type: GraphQLString,
+      resolve: (payload) => payload.text,
+      //resolve: resolver(Task)
+      
     },
     user: {
       type: userType,
@@ -158,46 +161,10 @@ const taskType = new GraphQLObjectType({
   interfaces: [nodeInterface]
 });
 
-/*const projectType = new GraphQLObjectType({
-  name: 'Project',
-  fields: () => ({
-    id: globalIdField('Project'),
-    users: {
-      type: userConnection.connectionType,
-      args: connectionArgs,
-      resolve: resolver(Project.Users)
-    }
-  }),
-  interfaces: [nodeInterface]
-});*/
-
-const featureType = new GraphQLObjectType({
-  name: 'Feature',
-  description: 'Feature integrated in our starter kit',
-  fields: () => ({
-    id: globalIdField('Feature'),
-    name: {
-      type: GraphQLString,
-      description: 'Name of the feature'
-    },
-    description: {
-      type: GraphQLString,
-      description: 'Description of the feature'
-    },
-    url: {
-      type: GraphQLString,
-      description: 'Url of the feature'
-    }
-  }),
-  interfaces: [nodeInterface]
-});
-
 
 /**
  * CONNECTIONS 
  */
-
-const { connectionType: featureConnection, edgeType: featureEdge } = connectionDefinitions({ name: 'Feature', nodeType: featureType });
 
 /*const taskConnection = connectionDefinitions({name: 'Task', nodeType: taskType,}),  
       subordinateConnection = connectionDefinitions({name: 'Subordinate', nodeType: userType}), 
@@ -243,49 +210,21 @@ const addTaskMutation = mutationWithClientMutationId({
               text: text
             });
 
-            return
-             {Task};
+            return {task};
           }
         });
 
 
 
-          /*Task.create.resolves(Task.build({
-            id: viewer.id,
-            title: title,
-            userId: this.viewer.get('id')
+  /*Task.create.resolves(Task.build({
+        id: viewer.id,
+        title: title,
+        userId: this.viewer.get('id')
           }));*/
 
  /* mutateAndGetPayload: ({text}) => {
     const localTodoId = addTodo(text);
     return {localTodoId}; */
-
-
-const addFeatureMutation = mutationWithClientMutationId({
-  name: 'AddFeature',
-  inputFields: {
-    name: { type: new GraphQLNonNull(GraphQLString) },
-    description: { type: new GraphQLNonNull(GraphQLString) },
-    url: { type: new GraphQLNonNull(GraphQLString) },
-  },
-
-  outputFields: {
-    featureEdge: {
-      type: featureEdge,
-      resolve: (obj) => {
-        const cursorId = cursorForObjectInConnection(getFeatures(), obj);
-        return { node: obj, cursor: cursorId };
-      }
-    },
-    viewer: {
-      type: userType,
-      resolve: resolver(User)
-    },
-  },
-
-  mutateAndGetPayload: ({ name, description, url }) => addFeature(name, description, url)
-});
-
 
 
 /**
@@ -311,7 +250,6 @@ const addFeatureMutation = mutationWithClientMutationId({
 const mutationType = new GraphQLObjectType({
   name: 'Mutation',
   fields: () => ({
-    addFeature: addFeatureMutation,
     addTask: addTaskMutation,
   })
 });
