@@ -841,7 +841,7 @@
           "fields": null,
           "inputFields": [
             {
-              "name": "title",
+              "name": "text",
               "description": null,
               "type": {
                 "kind": "NON_NULL",

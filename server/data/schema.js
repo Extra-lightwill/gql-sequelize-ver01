@@ -218,7 +218,7 @@ const taskConnection = sequelizeConnection({
 const addTaskMutation = mutationWithClientMutationId({
           name: 'addTask',
           inputFields: {
-            title: {
+            text: {
               type: new GraphQLNonNull(GraphQLString)
             }
           },
@@ -238,17 +238,27 @@ const addTaskMutation = mutationWithClientMutationId({
               resolve: (payload) => taskConnection.resolveEdge(payload.Task)
             }
           }),
-          mutateAndGetPayload: async ({title}, {viewer}) => {
-            let Task = await this.Task.create({
-              title: title,
-              userId: viewer.id
+          mutateAndGetPayload: async ({text}, {viewer}) => {
+            const task = await Task.create({
+              text: text
             });
 
-            return {
-              task: Task
-            };
+            return
+             {Task};
           }
         });
+
+
+
+          /*Task.create.resolves(Task.build({
+            id: viewer.id,
+            title: title,
+            userId: this.viewer.get('id')
+          }));*/
+
+ /* mutateAndGetPayload: ({text}) => {
+    const localTodoId = addTodo(text);
+    return {localTodoId}; */
 
 
 const addFeatureMutation = mutationWithClientMutationId({

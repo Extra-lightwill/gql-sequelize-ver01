@@ -7,7 +7,7 @@ const Task = Conn.define('Task', {
         primaryKey: true,
         autoIncrement: true
     },
-	title: {
+	text: {
 		type: Sequelize.TEXT, 
 	},
 });

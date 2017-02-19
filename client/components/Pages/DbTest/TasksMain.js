@@ -26,10 +26,10 @@ class TasksMain extends React.Component {
   }
 
  
-    _onNewTaskSave = (stext) => {
+    _onNewTaskSave = (text) => {
 
     this.props.relay.commitUpdate(
-      new addTaskMutation({ viewer: this.props.viewer, stext })
+      new addTaskMutation({ viewer: this.props.viewer, text })
     );
   };
 
@@ -113,7 +113,7 @@ class TasksMain extends React.Component {
 		return (
 			<div>
 
-      <button  onClick={this._onNewTaskSave}>Add new task!</button>
+      <button onClick={this._onNewTaskSave}>Add new task!</button>
       <button>Edit task</button>
 
       <br />

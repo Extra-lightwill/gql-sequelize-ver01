@@ -12,7 +12,7 @@ type AddFeaturePayload {
 }
 
 input addTaskInput {
-  title: String!
+  text: String!
   clientMutationId: String
 }
 
