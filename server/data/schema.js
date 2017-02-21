@@ -207,6 +207,7 @@ const addTaskMutation = mutationWithClientMutationId({
           mutateAndGetPayload: async ({text}, {viewer}) => {
             const task = await Task.create({
               text: text
+              //user_id: viewer.id
             });
 
             return {task};
@@ -216,9 +217,9 @@ const addTaskMutation = mutationWithClientMutationId({
 
 
   /*Task.create.resolves(Task.build({
-        id: viewer.id,
-        title: title,
-        userId: this.viewer.get('id')
+        //id: viewer.id,
+        text: text,
+        user_id: this.viewer.get('id')
           }));*/
 
  /* mutateAndGetPayload: ({text}) => {
